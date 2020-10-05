@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
         class="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/app_nav_graph"/>
 
@@ -21,5 +22,14 @@
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:entries="@array/countryCodes"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

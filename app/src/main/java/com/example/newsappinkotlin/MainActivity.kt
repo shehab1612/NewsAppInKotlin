@@ -2,6 +2,7 @@ package com.example.newsappinkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsappinkotlin.R
@@ -13,5 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
+        spinner.onItemClickListener(invoke (printname(spinner.selectedItem.toString())))
+
     }
+    fun printname(name:String){{Log.d("hello",name)}.invoke()}
 }
