@@ -2,74 +2,66 @@ package com.example.newsappinkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.core.content.res.FontResourcesParserCompat
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.newsappinkotlin.APIServices.APIClient
-import com.example.newsappinkotlin.APIServices.NewsModel
+import com.example.newsappinkotlin.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_headlines.*
 
 class MainActivity : AppCompatActivity() {
-
-
-    private lateinit var newsLayoutManager: LinearLayoutManager
-
-    private var newsPage = 1
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        newsLayoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
-        news_recycler.layoutManager = newsLayoutManager
-        var News_Adapter = NewsAdapter(mutableListOf())
-        news_recycler.adapter = News_Adapter
-
-        getNews()
-
-
-        val data:MutableList<NewsModel>
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
+        
+        val headlines_fragment = HeadlinesFragment()
+        val itemDetails_fragment = ItemDetailsFragment()
+        val savedItems_fragment = SavedItemsFragment()
 
-        APIClient.getNewsByCountry("eg")
-    }
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment_container, headlines_fragment)
+            addToBackStack(null)
+            commit()
+        }
 
-private fun getNews(){
-    Repository.getNews(
-        newsPage,
-        ::onNewsFetched
-    )
-}
-
-    private fun attachNewsOnScrollListener(){
-        news_recycler.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val totalItemCount = newsLayoutManager.itemCount
-                val visibleItemCount = newsLayoutManager.childCount
-                val firstVisibleItem = newsLayoutManager.findFirstVisibleItemPosition()
-
-                    if (firstVisibleItem + visibleItemCount >= totalItemCount / 2){
-                        recyclerView.removeOnScrollListener(this)
-                        newsPage++
-                        getNews()
-                    }
+        bottom_nav_view.headlinesFragment.SetOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_container, headlines_fragment)
+                addToBackStack(null)
+                commit()
             }
-        })
+        }
+
+        bottom_nav_view.savedItemsFragment.SetOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_container, savedItems_fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        imageButton.SetOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_container, headlines_fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        imageView2.SetOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_container, itemDetails_fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        imageButton2.SetOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment_container, savedItems_fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
     }
-
-    private fun onNewsFetched(news: MutableList<NewsModel>){
-    NewsAdapter(mutableListOf()).addmoreNews(news)
-    attachNewsOnScrollListener()
-}
-
 }
