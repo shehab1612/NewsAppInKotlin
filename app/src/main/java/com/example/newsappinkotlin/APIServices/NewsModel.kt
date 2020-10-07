@@ -5,7 +5,7 @@ import java.util.*
 
 data class NewsModel
     (
-    @SerializedName ("source") val source: mySource,
+   // @SerializedName ("source") val source: mySource,
     @SerializedName ("author") val author: String,
     @SerializedName ("title") val title: String,
     @SerializedName ("url") val url: String,
