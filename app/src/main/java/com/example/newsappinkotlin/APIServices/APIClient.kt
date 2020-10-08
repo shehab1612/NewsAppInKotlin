@@ -68,17 +68,22 @@ var newsModel: MutableList<NewsModel>
 
         })
      return newsModel}
-    fun getNewsByCountry(Country:String="eg",page:Int=1){
-        val call:Call<CallResponse> = apiInterface.getByCountry("eg",page=page)
 
+    fun getNewsByCountry(country: String="eg"):MutableList<NewsModel>{
+        val call:Call<CallResponse> = apiInterface.getByCountry(country)
+        var newsModel: MutableList<NewsModel>
+        newsModel= mutableListOf()
         call.enqueue(object : Callback<CallResponse> {
             override fun onResponse(call: Call<CallResponse>, response: Response<CallResponse>) {
-
+                Log.d("response", "returned")
                 if (response.isSuccessful) {
                     if (response.body() !== null) {
+
+                        newsModel.addAll (response.body()!!.news)
                         Log.d("success", "onResponse: ")
+
                     } else {
-                        Log.d("success", "null: ")
+                        Log.d("success", "null ")
 
                     }
                 } else {
@@ -89,14 +94,15 @@ var newsModel: MutableList<NewsModel>
 
             override fun onFailure(call: Call<CallResponse>, t: Throwable) {
                 t.printStackTrace()
-                Log.d("failed", "failed: ")
+                // println("call is failed${t.cause}")
+                Log.d("failed", "onResponse: ")
 
-                //   println("call is failed${t.cause}")
 
             }
 
 
         })
+        return newsModel
     }
 }
 

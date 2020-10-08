@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
 val data:MutableList<NewsModel>
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
 
-        APIClient.getNewsByTopic("all")
-    }
+APIClient.getNewsByCountry("eg")    }
     fun printname(name:String){{Log.d("hello",name)}.invoke()}
     fun getnews(data:MutableList<NewsModel>):MutableLiveData<MutableList<NewsModel>>{
 return MutableLiveData(data)
