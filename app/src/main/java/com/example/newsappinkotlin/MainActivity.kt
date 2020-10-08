@@ -3,6 +3,7 @@ package com.example.newsappinkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -17,8 +18,12 @@ class MainActivity : AppCompatActivity() {
 val data:MutableList<NewsModel>
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
 
-        APIClient.getNewsByTopic("all",::getnews,::fail)
+        APIClient.getNewsByTopic("all",::Toaster)
 
+    }
+    fun Toaster(txt:String)
+    {
+        Toast.makeText(this,txt,Toast.LENGTH_LONG)
     }
     fun printname(name:String){{Log.d("hello",name)}.invoke()}
     fun getnews(data:MutableList<NewsModel>):MutableLiveData<MutableList<NewsModel>>{

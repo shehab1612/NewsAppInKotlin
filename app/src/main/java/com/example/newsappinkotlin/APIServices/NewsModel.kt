@@ -10,8 +10,8 @@ data class NewsModel
     @SerializedName ("title") val title: String,
     @SerializedName ("url") val url: String,
     @SerializedName ("urlToImage") val Image: String,
-    @SerializedName ("publishedAt") val Date: Date,
-    @SerializedName ("content") val content: Date
+    @SerializedName ("publishedAt") val Date: String,
+    @SerializedName ("content") val content: String
 
 
 

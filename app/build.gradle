@@ -41,7 +41,6 @@ dependencies {
 
     // Gson
     // https://github.com/google/gson
-
     implementation 'com.hbb20:ccp:1.7.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
