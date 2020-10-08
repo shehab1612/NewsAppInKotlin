@@ -25,38 +25,35 @@ val apiKey:String="4451200787294791a3863b9dcd8c9903"
     }
 
 
-    fun getNewsByCountry(topic:String/*,onsuccess:(newslist:MutableList<NewsModel>)->MutableLiveData<MutableList<NewsModel>>,onfailure:()->Unit*/):MutableList<NewsModel>?{
-        var newsFetched:MutableList<NewsModel>?= mutableListOf()
-        service.getByCountry(apiKey="4451200787294791a3863b9dcd8c9903",country = "eg").enqueue(object:Callback<CallResponse>
+    fun getNewsByTopic(topic:String,onsuccess:(newslist:MutableList<NewsModel>)->MutableLiveData<MutableList<NewsModel>>,onfailure:()->Unit){
+        service.getByTopic().enqueue(object:Callback<CallResponse>
         {
             override fun onFailure(call: Call<CallResponse>, t: Throwable)
             {
-
                 Log.d("mo","failure")
-            //onfailure.invoke()
+            onfailure.invoke()
             }
 
             override fun onResponse(call: Call<CallResponse>, response: Response<CallResponse>)
-            {  if(response.isSuccessful)
-            {
-                if (response.body()!=null)
-                {
-                    newsFetched?.addAll(response.body()!!.news)
-                    Log.d("momomomo", "onResponse: ")
+            {   Log.d("response","returned")
+                if(response.isSuccessful){
+            if (response.body()!==null)
+                {   Log.d("mo","success")
+                   Log.d("nnn","not null")
+                    onsuccess.invoke(response.body()!!.news)
                 }
-                else
-                {
-                    Log.d("nppp", "onResponse: nononoon")
+                    else {
+                onfailure.invoke()
+                Log.d("nnn"," null")
+            }
                 }
-            }
-                else
-            {
-                Log.d("not successful", "onResponse: daddfafadf")
-            }
+                else{
+
+                    Log.d("momomomo","failure")
+                }
 
             }
         })
-        return newsFetched
     }
    /* fun getNewsByCountry(
         Country:String,
