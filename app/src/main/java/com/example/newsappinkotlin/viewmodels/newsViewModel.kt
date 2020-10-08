@@ -14,10 +14,19 @@ lateinit var newsfromdatabase:MutableLiveData<MutableList<NewsModel>>
         var pagesloaded:Int=1
     }
 lateinit   var newsFromAPI:MutableLiveData<MutableList<NewsModel>>
-    fun APIgetTopicNews(topic:String="all",page:Int=1):MutableLiveData<MutableList<NewsModel>>
+    fun APIgetTopicNews(topic:String="all"):MutableLiveData<MutableList<NewsModel>>
     {
 newsFromAPI.postValue(APIClient.getNewsByTopic(topic,page=pagesloaded ))
+        pagesloaded++
       // newsFromAPI.postValue(APIClient.getNewsByCountry(country ))
         return newsFromAPI
     }
+    fun APIgetCountryNews(country:String="eg"):MutableLiveData<MutableList<NewsModel>>
+    {
+        newsFromAPI.postValue(APIClient.getNewsByCountry(country))
+
+        return newsFromAPI
+    }
+
+
 }
