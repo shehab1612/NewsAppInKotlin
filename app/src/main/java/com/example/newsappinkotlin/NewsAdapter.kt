@@ -41,7 +41,7 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 holder.bind(card)
 
     }
-    fun addmoreNews(news: List<NewsModel>){
+    fun addmoreNews(news: MutableList<NewsModel>){
         this.News!!.addAll(news)
         notifyItemRangeInserted(
             this.News!!.size,

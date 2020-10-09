@@ -14,6 +14,7 @@ lateinit var newsfromdatabase:MutableLiveData<MutableList<NewsModel>>
         var pagesloaded:Int=1
     }
 lateinit   var newsFromAPI:MutableLiveData<MutableList<NewsModel>>
+
     fun APIgetTopicNews(topic:String="all",page:Int=1):MutableLiveData<MutableList<NewsModel>>
     {newsFromAPI=MutableLiveData<MutableList<NewsModel>>()
 newsFromAPI.postValue(APIClient.getNewsByTopic(topic,page=pagesloaded ))
