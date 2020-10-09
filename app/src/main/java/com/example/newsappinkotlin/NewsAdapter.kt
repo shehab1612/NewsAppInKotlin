@@ -11,7 +11,7 @@ import com.example.newsappinkotlin.APIServices.NewsModel
 import kotlinx.android.synthetic.main.news_card.view.*
 
 //import  kotlinx.android.synthetic.main.news_card.view.*
-class NewsAdapter(private  var News:MutableList<NewsModel>):RecyclerView.Adapter<NewsAdapter.MYView>() {
+class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapter<NewsAdapter.MYView>() {
     class MYView(itemView: View):RecyclerView.ViewHolder(itemView) {
         fun bind(newsmodel:NewsModel)
         {
