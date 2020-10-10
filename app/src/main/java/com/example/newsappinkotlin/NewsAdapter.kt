@@ -29,12 +29,13 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
         fun bind(newsmodel:NewsModel)
         {
             itemView.title.text=newsmodel.title
-           // itemView.link.text=newsmodel.url
+            // itemView.link.text=newsmodel.url
 
             Glide.with(itemView).load(newsmodel.Image).transform(CenterCrop()).into(itemView.news_image)
+            //  itemView.setOnClickListener()
             newsmodel.savedImage=itemView.news_image
             //itemView.link.text=newsmodel.url
-         //   itemView.author.text="author is: ${newsmodel.author}"
+            //   itemView.author.text="author is: ${newsmodel.author}"
 
             itemViewNewsData = newsmodel
         }
@@ -59,6 +60,10 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
             this.News!!.size,
             News!!.size - 1
         )
+    }
+    public interface onNewsClicked
+    {
+        fun onNewsClicked(position:Int)
     }
 
 }
