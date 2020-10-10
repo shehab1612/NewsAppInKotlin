@@ -9,11 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.newsappinkotlin.APIServices.NewsModel
+import com.example.newsappinkotlin.database.AppDatabase
 import kotlinx.android.synthetic.main.news_card.view.*
 
 //import  kotlinx.android.synthetic.main.news_card.view.*
 class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapter<NewsAdapter.MYView>() {
+
     class MYView(itemView: View):RecyclerView.ViewHolder(itemView) {
+
+        private lateinit var dataBase: AppDatabase
+        public lateinit var itemViewNewsData: NewsModel
+
+        init {
+            itemView.save_btn.setOnClickListener {
+                dataBase.getNewsDao().insertNews(itemViewNewsData)
+            }
+        }
+
         fun bind(newsmodel:NewsModel)
         {
             itemView.title.text=newsmodel.title
@@ -25,6 +37,7 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
             //itemView.link.text=newsmodel.url
          //   itemView.author.text="author is: ${newsmodel.author}"
 
+            itemViewNewsData = newsmodel
         }
 
     }
@@ -38,7 +51,7 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: MYView, position: Int) {
         val card=News!![position]
-holder.bind(card)
+        holder.bind(card)
 
     }
     fun addmoreNews(news: MutableList<NewsModel>){
