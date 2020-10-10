@@ -7,14 +7,13 @@ import androidx.room.Query
 import com.example.newsappinkotlin.APIServices.NewsModel
 
 @Dao
-interface MoviesDao{
+interface NewsDao{
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     fun insertNews(newsModel: NewsModel)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(newsModel: NewsModel)
+    fun insertAll(newsModel: MutableList<NewsModel>)
 
     @Query("SELECT * FROM news_table")
-    fun getAllMovies(): List<NewsModel>
-
+    fun getAllNews(): List<NewsModel>
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsappinkotlin.APIServices.NewsModel
 import com.example.newsappinkotlin.MainActivity
@@ -44,13 +45,10 @@ class HeadlinesFragment : Fragment() {
         )
         news_recycler.layoutManager = llm
 
-        VM.APIgetTopicNews("all")?.observe(this, Observer {
+        VM.APIgetTopicNews("all")?.observe(viewLifecycleOwner, Observer {
             Log.d("observer reached", "onCreate: ")
             news_recycler.adapter  = NewsAdapter(it.news)
             (news_recycler.adapter as NewsAdapter).addmoreNews(it.news)
-
         })
-
-
     }
 }

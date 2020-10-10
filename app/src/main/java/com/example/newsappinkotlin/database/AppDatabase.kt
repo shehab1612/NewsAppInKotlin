@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 abstract class AppDatabase: RoomDatabase(){
-    abstract fun getMovieDao(): MoviesDao
+    abstract fun getNewsDao(): NewsDao
 
     companion object{
         @Volatile
