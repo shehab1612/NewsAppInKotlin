@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class CallResponse
     (
     @SerializedName("articles")val news:MutableList<NewsModel>,
-    @SerializedName("page") val page: Int
+    @SerializedName("totalResults") val resultsnum: Int,
+    @SerializedName("status") val status: String
 
 )
