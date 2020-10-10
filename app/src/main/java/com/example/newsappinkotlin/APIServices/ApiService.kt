@@ -17,7 +17,6 @@ interface ApiService {
     fun getByTopic(
         @Query("q")topic:String="all",
         @Query("apiKey") apiKey:String="a728f12c39f9481bb852dab2d4547c00"
-
          ,@Query("page")page:Int=1): Call<CallResponse>
 
 }

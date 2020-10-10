@@ -3,8 +3,7 @@ package com.example.newsappinkotlin.APIServices
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.newsappinkotlin.viewmodels.newsViewModel
-import com.google.gson.GsonBuilder
+import com.example.newsappinkotlin.database.AppDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,21 +32,27 @@ object APIClient {
     val  apiInterface:ApiService by lazy {
         retrofit!!.create(ApiService::class.java)
     }
+    private lateinit var dataBase: AppDatabase
+    private var news: MutableList<NewsModel> = ArrayList()
 
 
 
     fun getNewsByTopic(topic: String="all",page: Int=1): LiveData<CallResponse>?{
+
         val call:Call<CallResponse> = apiInterface.getByTopic(topic,page = page)
-var livedata:MutableLiveData<CallResponse>?= MutableLiveData()
+        var livedata:MutableLiveData<CallResponse>?= MutableLiveData()
 
         call.enqueue(object : Callback<CallResponse> {
             override fun onResponse(call: Call<CallResponse>, response: Response<CallResponse>) {
                 Log.d("response", "returned")
                 if (response.isSuccessful) {
                     if (response.body() !== null) {
-
-
                         livedata?.value=response.body()
+                        news.addAll(response.body()!!.news)
+
+                        //database instance saving the data retrieved by the retrofit call.
+                        dataBase.getNewsDao().insertAll(news)
+
                         Log.d("success", "onResponse: ")
                         Log.d("call", "page number is${page}")
                         Log.d("success", response.body()!!.news.get(1).content)
@@ -56,11 +61,9 @@ var livedata:MutableLiveData<CallResponse>?= MutableLiveData()
                     } else {
                         livedata=null
                         Log.d("success", "null ")
-
                     }
                 } else {
                     Log.d("success", "failed: ")
-
                 }
             }
 
