@@ -29,6 +29,7 @@ object RetrofitObj{
 }
 
 object APIClient {
+    private val newsList: MutableList<NewsModel> = mutableListOf()
     var retrofit = RetrofitObj.getRetrofit()
     val  apiInterface:ApiService by lazy {
         retrofit!!.create(ApiService::class.java)
@@ -37,9 +38,14 @@ object APIClient {
 
 
     fun getNewsByTopic(topic: String="all",page: Int=1): LiveData<CallResponse>?{
+
         val call:Call<CallResponse> = apiInterface.getByTopic(topic,page = page)
 var livedata:MutableLiveData<CallResponse>?= MutableLiveData()
-
+        if (newsList.isNotEmpty()) {
+           var callResponse=CallResponse(newsList,0,"no")
+            livedata?.postValue(callResponse)
+            return livedata
+        }
         call.enqueue(object : Callback<CallResponse> {
             override fun onResponse(call: Call<CallResponse>, response: Response<CallResponse>) {
                 Log.d("response", "returned")
@@ -48,6 +54,7 @@ var livedata:MutableLiveData<CallResponse>?= MutableLiveData()
 
 
                         livedata?.value=response.body()
+                        newsList.addAll(response.body()!!.news)
                         Log.d("success", "onResponse: ")
                         Log.d("call", "page number is${page}")
                         Log.d("success", response.body()!!.news.get(1).content)
