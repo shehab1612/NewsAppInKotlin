@@ -14,16 +14,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-val data:MutableList<NewsModel>
+        val data:MutableList<NewsModel>
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
 
-APIClient.getNewsByCountry("eg")    }
-    fun printname(name:String){{Log.d("hello",name)}.invoke()}
-    fun getnews(data:MutableList<NewsModel>):MutableLiveData<MutableList<NewsModel>>{
-return MutableLiveData(data)
+        APIClient.getNewsByCountry("eg")
     }
-    fun fail(){
-        printname("no")
-    }
+
+
 
 }

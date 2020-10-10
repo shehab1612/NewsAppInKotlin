@@ -1,32 +1,42 @@
 package com.example.newsappinkotlin.viewmodels
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.newsappinkotlin.APIServices.APIClient
+import com.example.newsappinkotlin.APIServices.CallResponse
 import com.example.newsappinkotlin.APIServices.NewsModel
 
 class newsViewModel:ViewModel()
 {
 
 lateinit var newsfromdatabase:MutableLiveData<MutableList<NewsModel>>
+
+
     companion object
-    {
+    {   var newsFromAPI:MutableLiveData<CallResponse>?=null
         var pagesloaded:Int=1
     }
-lateinit   var newsFromAPI:MutableLiveData<MutableList<NewsModel>>
-    fun APIgetTopicNews(topic:String="all"):MutableLiveData<MutableList<NewsModel>>
-    {
-newsFromAPI.postValue(APIClient.getNewsByTopic(topic,page=pagesloaded ))
-        pagesloaded++
-      // newsFromAPI.postValue(APIClient.getNewsByCountry(country ))
-        return newsFromAPI
-    }
-    fun APIgetCountryNews(country:String="eg"):MutableLiveData<MutableList<NewsModel>>
-    {
-        newsFromAPI.postValue(APIClient.getNewsByCountry(country))
+   /* init {
+        newsFromAPI= MutableLiveData()
+    }*/
 
-        return newsFromAPI
+    fun APIgetTopicNews(topic:String="all"):LiveData<CallResponse>?
+    {
+        Log.d("viewmodel call: ", "APIgetTopicNews: ")
+
+        pagesloaded++
+        return APIClient.getNewsByTopic(topic,page=pagesloaded )
+      // newsFromAPI.postValue(APIClient.getNewsByCountry(country ))
+
     }
+    /*fun APIgetCountryNews(country:String="eg")
+    {
+        newsFromAPI?.postValue(APIClient.getNewsByCountry(country))
+
+
+    }*/
 
 
 }

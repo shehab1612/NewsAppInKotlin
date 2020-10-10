@@ -3,6 +3,7 @@ package com.example.newsappinkotlin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,15 +16,13 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
     class MYView(itemView: View):RecyclerView.ViewHolder(itemView) {
         fun bind(newsmodel:NewsModel)
         {
-            if(newsmodel.author==null||newsmodel.author=="null")
-            {
-                newsmodel.author=="not specified"
-            }
             itemView.title.text=newsmodel.title
-            itemView.link.text=newsmodel.url
+           // itemView.link.text=newsmodel.url
+
             Glide.with(itemView).load(newsmodel.Image).transform(CenterCrop()).into(itemView.news_image)
-            itemView.link.text=newsmodel.url
-            itemView.author.text="author is: ${newsmodel.author}"
+            newsmodel.savedImage=itemView.news_image
+            //itemView.link.text=newsmodel.url
+         //   itemView.author.text="author is: ${newsmodel.author}"
 
         }
 
