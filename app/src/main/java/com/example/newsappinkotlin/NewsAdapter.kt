@@ -20,6 +20,7 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
            // itemView.link.text=newsmodel.url
 
             Glide.with(itemView).load(newsmodel.Image).transform(CenterCrop()).into(itemView.news_image)
+          //  itemView.setOnClickListener()
             newsmodel.savedImage=itemView.news_image
             //itemView.link.text=newsmodel.url
          //   itemView.author.text="author is: ${newsmodel.author}"
@@ -46,6 +47,10 @@ holder.bind(card)
             this.News!!.size,
             News!!.size - 1
         )
+    }
+    public interface onNewsClicked
+    {
+        fun onNewsClicked(position:Int)
     }
 
 }
