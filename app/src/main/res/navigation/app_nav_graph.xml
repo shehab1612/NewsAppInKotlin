@@ -40,7 +40,11 @@
         android:id="@+id/itemDetailsFragment"
         android:name="com.example.newsappinkotlin.ui.destinations.ItemDetailsFragment"
         android:label="fragment_item_details"
-        tools:layout="@layout/fragment_item_details" />
+        tools:layout="@layout/fragment_item_details" >
+        <argument
+            android:name="newsModel"
+            app:argType="com.example.newsappinkotlin.APIServices.NewsModel" />
+    </fragment>
 
 
 </navigation>
