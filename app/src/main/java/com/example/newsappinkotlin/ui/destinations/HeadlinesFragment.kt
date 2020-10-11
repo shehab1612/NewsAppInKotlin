@@ -46,7 +46,7 @@ class HeadlinesFragment : Fragment() ,NewsAdapter.onNewsClicked{
         )
         news_recycler.layoutManager = llm
 
-        VM.APIgetTopicNews("all")?.observe(this, Observer {
+        VM.APIgetTopicNews("all")?.observe(viewLifecycleOwner, Observer {
             Log.d("observer reached", "onCreate: ")
             news_recycler.adapter  = NewsAdapter(it.news)
             (news_recycler.adapter as NewsAdapter).addmoreNews(it.news)

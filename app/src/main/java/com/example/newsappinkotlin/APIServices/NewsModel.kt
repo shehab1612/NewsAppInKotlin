@@ -3,6 +3,7 @@ package com.example.newsappinkotlin.APIServices
 import android.widget.ImageView
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
 @Entity(tableName = "news_table")
@@ -16,7 +17,7 @@ data class NewsModel
     @SerializedName ("publishedAt") val Date: String,
     @SerializedName ("content") val content: String,
   //for offline supported image
-    var savedImage:ImageView)
+    var savedImage:ImageView) : Serializable
      {
          init {
              savedImage=ImageView(null)

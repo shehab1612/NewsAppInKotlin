@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.view.menu.ActionMenuItemView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.newsappinkotlin.APIServices.NewsModel
 import com.example.newsappinkotlin.database.AppDatabase
+import kotlinx.android.synthetic.main.fragment_headlines.view.*
 import kotlinx.android.synthetic.main.news_card.view.*
 
 //import  kotlinx.android.synthetic.main.news_card.view.*
@@ -44,6 +49,11 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MYView {
         val viewinflater=LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+        viewinflater.setOnClickListener {
+            var itemPosition =parent.news_recycler.getChildLayoutPosition(viewinflater)
+            val bundle = bundleOf("news" to News?.get(itemPosition))
+            parent.findNavController().navigate(R.id.action_headlinesFragment_to_itemDetailsFragment, bundle)
+        }
         return MYView(viewinflater)
     }
 
