@@ -1,5 +1,7 @@
 package com.example.newsappinkotlin.ui.destinations
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -34,5 +36,14 @@ class ItemDetailsFragment : Fragment() {
         val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
         val date = dateTimeFormat.parse(newsModel.Date)
         dateTimeTextView.text = date.toString()
+
+
+        //Read full click listener
+        readFullButton.setOnClickListener {
+            val url = newsModel.url
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
     }
 }
