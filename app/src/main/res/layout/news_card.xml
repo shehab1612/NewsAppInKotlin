@@ -18,8 +18,9 @@
 
     <ImageView
         android:id="@+id/news_image"
-        android:layout_width="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="330dp"
+
+        android:layout_marginTop="10dp"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,8 @@ app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:scaleX="0.5"
-        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+
         android:layout_height="wrap_content"
         android:background="@drawable/save_doc"
         app:layout_constraintRight_toRightOf="parent"

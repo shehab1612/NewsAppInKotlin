@@ -22,14 +22,10 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 
     class MYView(itemView: View):RecyclerView.ViewHolder(itemView) {
 
-        private lateinit var dataBase: AppDatabase
+
         public lateinit var itemViewNewsData: NewsModel
 
-        init {
-            itemView.save_btn.setOnClickListener {
-                dataBase.getNewsDao().insertNews(itemViewNewsData)
-            }
-        }
+
 
         fun bind(newsmodel:NewsModel)
         {
@@ -38,10 +34,12 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 
             Glide.with(itemView).load(newsmodel.Image).transform(CenterCrop()).into(itemView.news_image)
             //  itemView.setOnClickListener()
-            newsmodel.savedImage=itemView.news_image
+          //  newsmodel.savedImage=itemView.news_image
             //itemView.link.text=newsmodel.url
             //   itemView.author.text="author is: ${newsmodel.author}"
-
+            itemView.save_btn.setOnClickListener {
+                AppDatabase.INSTANCE!!.getNewsDao().insertNews(itemViewNewsData)
+            }
             itemViewNewsData = newsmodel
         }
 
@@ -49,6 +47,7 @@ class NewsAdapter(private  var News:MutableList<NewsModel>?):RecyclerView.Adapte
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MYView {
         val viewinflater=LayoutInflater.from(parent.context).inflate(R.layout.news_card, parent, false)
+
         viewinflater.setOnClickListener {
             var itemPosition =parent.news_recycler.getChildLayoutPosition(viewinflater)
             val bundle = bundleOf("news" to News?.get(itemPosition))

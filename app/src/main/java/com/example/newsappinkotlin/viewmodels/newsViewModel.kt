@@ -18,9 +18,10 @@ lateinit var newsfromdatabase:MutableLiveData<MutableList<NewsModel>>
     {   var newsFromAPI:MutableLiveData<CallResponse>?=null
         var pagesloaded:Int=1
     }
-   /* init {
-        newsFromAPI= MutableLiveData()
-    }*/
+    init
+    {
+
+    }
 
     fun APIgetTopicNews(topic:String="all"):LiveData<CallResponse>?
     {
