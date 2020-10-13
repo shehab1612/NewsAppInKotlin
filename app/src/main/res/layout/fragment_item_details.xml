@@ -5,106 +5,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".ui.destinations.ItemDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <ImageView
-        android:id="@+id/headImage"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_launcher_background" />
+        android:layout_height="match_parent"
+        tools:context=".ui.destinations.ItemDetailsFragment">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:src="@drawable/cancel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headImage"
-        tools:text="TextView" />
 
-    <TextView
-        android:id="@+id/websiteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/titleTextView"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-        tools:text="website" />
+        <ImageView
+            android:id="@+id/headImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#000000"
-        android:text="READ FULL STORY"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentTextView" />
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headImage"
+            tools:text="TextView" />
 
-    <TextView
-        android:id="@+id/contentTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#A9A9A9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTimeTextView"
-        tools:text="vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv  " />
+        <TextView
+            android:id="@+id/websiteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            tools:text="website" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:backgroundTint="#FFFFFF"
-        android:src="@drawable/ic_saved"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+        <Button
+            android:id="@+id/readFullButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#000000"
+            android:text="READ FULL STORY"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentTextView" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:src="@drawable/share"
-        app:layout_constraintBottom_toBottomOf="@+id/dateTimeTextView"
-        app:layout_constraintEnd_toEndOf="@+id/headImage" />
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#A9A9A9"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+            app:layout_constraintStart_toStartOf="@+id/dateTimeTextView"
+            app:layout_constraintTop_toBottomOf="@+id/dateTimeTextView"
+            tools:text="vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv vhjvjhvjhv jhvjhvjhvjhjvhv  " />
 
-    <TextView
-        android:id="@+id/dateTimeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="@+id/websiteTextView"
-        app:layout_constraintTop_toBottomOf="@+id/websiteTextView"
-        tools:text="Date and time" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:backgroundTint="#FFFFFF"
+            android:src="@drawable/ic_saved"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="#FFFFFF"
+            android:src="@drawable/share"
+            app:layout_constraintBottom_toBottomOf="@+id/dateTimeTextView"
+            app:layout_constraintEnd_toEndOf="@+id/headImage" />
+
+        <TextView
+            android:id="@+id/dateTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="@+id/websiteTextView"
+            app:layout_constraintTop_toBottomOf="@+id/websiteTextView"
+            tools:text="Date and time" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
