@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsappinkotlin.APIServices.APIClient
 import com.example.newsappinkotlin.APIServices.NewsModel
+import com.example.newsappinkotlin.database.AppDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,8 +20,7 @@ class MainActivity : AppCompatActivity() {
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment_container))
 
         APIClient.getNewsByCountry("eg")
+        AppDatabase.getDatabase(this)
     }
-
-
 
 }

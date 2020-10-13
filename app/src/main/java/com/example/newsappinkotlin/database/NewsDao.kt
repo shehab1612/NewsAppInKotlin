@@ -1,9 +1,6 @@
 package com.example.newsappinkotlin.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.newsappinkotlin.APIServices.NewsModel
 
 @Dao
@@ -16,4 +13,6 @@ interface NewsDao{
 
     @Query("SELECT * FROM news_table")
     fun getAllNews(): List<NewsModel>
+    @Delete
+    fun delete(model:NewsModel)
 }

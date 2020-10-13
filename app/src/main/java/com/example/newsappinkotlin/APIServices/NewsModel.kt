@@ -1,25 +1,21 @@
 package com.example.newsappinkotlin.APIServices
 
-import android.widget.ImageView
+import android.graphics.Bitmap
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
-import java.util.*
 
 @Entity(tableName = "news_table")
-data class NewsModel
-    (
+data class NewsModel(
     //@SerializedName ("source") val source: mySource,
     @SerializedName ("author") val author: String,
     @SerializedName ("title") val title: String,
-    @SerializedName ("url") val url: String,
+    @PrimaryKey @SerializedName ("url") val url: String,
     @SerializedName ("urlToImage") val Image: String,
     @SerializedName ("publishedAt") val Date: String,
     @SerializedName ("content") val content: String,
   //for offline supported image
-    var savedImage:ImageView) : Serializable
-     {
-         init {
-             savedImage=ImageView(null)
-         }
-}
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    var savedImage: ByteArray? = null) : Serializable

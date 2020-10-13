@@ -1,6 +1,7 @@
 package com.example.newsappinkotlin.ui.destinations
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -14,6 +15,7 @@ import com.example.newsappinkotlin.APIServices.NewsModel
 import com.example.newsappinkotlin.R
 import kotlinx.android.synthetic.main.fragment_item_details.*
 import kotlinx.android.synthetic.main.fragment_saved_items.*
+import kotlinx.android.synthetic.main.news_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,8 +31,14 @@ class ItemDetailsFragment : Fragment() {
 
         //populate the fragment
         val newsModel = arguments?.getSerializable("news") as NewsModel
-        //assuming we are online
-        Glide.with(this).load(newsModel.Image).transform(CenterCrop()).into(headImage)
+        if(newsModel.savedImage==null)
+            Glide.with(this).load(newsModel.Image).transform(CenterCrop()).into(headImage)
+        else
+            headImage.setImageBitmap(newsModel.savedImage?.size?.let {
+                BitmapFactory.decodeByteArray(newsModel.savedImage , 0,
+                    it
+                )
+            })
         titleTextView.text = newsModel.title
         contentTextView.text = newsModel.content
         val dateTimeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
