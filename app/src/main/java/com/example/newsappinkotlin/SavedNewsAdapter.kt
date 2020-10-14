@@ -16,9 +16,12 @@ import kotlinx.android.synthetic.main.fragment_headlines.view.*
 import kotlinx.android.synthetic.main.fragment_saved_items.*
 import kotlinx.android.synthetic.main.fragment_saved_items.view.*
 import kotlinx.android.synthetic.main.news_card.view.*
-import kotlinx.android.synthetic.main.news_card.view.news_image
-import kotlinx.android.synthetic.main.news_card.view.title
+
 import kotlinx.android.synthetic.main.saved_news_card.view.*
+import kotlinx.android.synthetic.main.saved_news_card.view.author
+import kotlinx.android.synthetic.main.saved_news_card.view.date
+import kotlinx.android.synthetic.main.saved_news_card.view.news_image
+import kotlinx.android.synthetic.main.saved_news_card.view.title
 
 class SavedNewsAdapter(private var News: MutableList<NewsModel>):RecyclerView.Adapter<SavedNewsAdapter.SavedViewHolder>() {
     class SavedViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
@@ -26,7 +29,13 @@ class SavedNewsAdapter(private var News: MutableList<NewsModel>):RecyclerView.Ad
 
         fun bind(newsmodel:NewsModel)
         {
+            if(newsmodel.author=="null"||newsmodel.author=="unknown")
+            {
+                newsmodel.author="unidentified author"
+            }
             itemView.title.text=newsmodel.title
+            itemView.author.text="By: ${newsmodel.author}"
+            itemView.date.text="Released at : ${newsmodel.Date.substring(0,10)}"
             itemView.news_image.setImageBitmap(newsmodel.savedImage?.size?.let {
                 BitmapFactory.decodeByteArray(newsmodel.savedImage , 0,
                     it

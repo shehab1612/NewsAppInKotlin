@@ -27,13 +27,15 @@ class NewsAdapter(private var News: MutableList<NewsModel>?):RecyclerView.Adapte
 
         fun bind(newsmodel:NewsModel)
         {
+            if(newsmodel.author=="null"||newsmodel.author=="unknown")
+            {
+                newsmodel.author="unidentified author"
+            }
             itemView.title.text=newsmodel.title
-            // itemView.link.text=newsmodel.url
+            itemView.author.text="By: ${newsmodel.author}"
+            itemView.date.text="Released at : ${newsmodel.Date.substring(0,10)}"
             Glide.with(itemView).load(newsmodel.Image).transform(CenterCrop()).into(itemView.news_image)
-            //  itemView.setOnClickListener()
-            //newsmodel.savedImage=itemView.news_image
-            //itemView.link.text=newsmodel.url
-            //   itemView.author.text="author is: ${newsmodel.author}"
+
         }
 
     }

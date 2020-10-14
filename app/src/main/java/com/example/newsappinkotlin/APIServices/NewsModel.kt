@@ -10,7 +10,7 @@ import java.io.Serializable
 @Entity(tableName = "news_table")
 data class NewsModel(
     //@SerializedName ("source") val source: mySource,
-    @SerializedName ("author") val author: String,
+    @SerializedName ("author") var author: String,
     @SerializedName ("title") val title: String,
     @PrimaryKey @SerializedName ("url") val url: String,
     @SerializedName ("urlToImage") val Image: String,
