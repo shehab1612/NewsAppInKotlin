@@ -10,13 +10,13 @@ interface ApiService {
 
     //gets top headlines by country called and will be defaulted to egypt in cas no country chosen from  spinner
     @GET("v2/top-headlines")
-      fun getByCountry(@Query("apiKey") apiKey:String="a728f12c39f9481bb852dab2d4547c00",
+      fun getByCountry(@Query("apiKey") apiKey:String="7bcae687ee8f46e8966ae70051257cce",
                        @Query("country")country:String="eg"): Call<CallResponse>
     //gets news about what the user searches for and will be defaulted to all topics
     @GET("v2/everything")
     fun getByTopic(
         @Query("q")topic:String="all",
-        @Query("apiKey") apiKey:String="a728f12c39f9481bb852dab2d4547c00"
+        @Query("apiKey") apiKey:String="7bcae687ee8f46e8966ae70051257cce"
          ,@Query("page")page:Int=1): Call<CallResponse>
 
 }

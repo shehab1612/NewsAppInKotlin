@@ -5,6 +5,6 @@
     android:innerRadius="30dp"
     android:shape="rectangle">
     <corners android:radius="30dp"/>
-    <gradient android:startColor="#262525" android:endColor="#8a6007"/>
+    <gradient android:startColor="#262525" android:endColor="#969698"/>
 
 </shape>
